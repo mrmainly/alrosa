@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer, useState } from 'react';
 
-function App() {
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { DispatchContext, StateContext, defaultStore } from './store'
+import { stateReducer } from './reducer'
+
+import { Chat, SignIn, SignUp, Calendar, Faq, Team, Employees, MyTasks, Settings } from './pages';
+import Layout from './layout'
+
+const App = () => {
+  const [state, dispatch] = useReducer(stateReducer, defaultStore)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DispatchContext.Provider value={dispatch}>
+      <StateContext.Provider value={state}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Chat />} />
+              <Route path="/sign-in" element={<SignIn />} />
+              <Route path="/sign-up" element={<SignUp />} />
+              <Route path="/faq" element={<Faq />} />
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/team" element={<Team />} />
+              <Route path="/employees" element={<Employees />} />
+              <Route path="/my-tasks" element={<MyTasks />} />
+              <Route path="/settings" element={<Settings />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </StateContext.Provider>
+    </DispatchContext.Provider>
   );
 }
 
