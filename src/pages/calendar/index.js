@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { styled } from '@mui/system'
 import { Box, Grid, MenuItem } from '@mui/material'
+import CalendarReact from 'react-calendar'
 
 import { EmployeesCard, MyText } from '../../components'
-import axios from 'axios'
 
 const Main = styled(Grid)(({ theme }) => ({
     display: 'flex',
@@ -26,7 +26,11 @@ const Calendar = () => {
             <CreateBox>
                 <MyText>Календарь</MyText>
             </CreateBox>
-            Calendar
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                <CalendarReact />
+                <CalendarReact />
+                <CalendarReact />
+            </Box>
         </Box>
     )
 }
