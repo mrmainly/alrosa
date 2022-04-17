@@ -60,8 +60,8 @@ const Chat = () => {
             <ChatEngine
                 height='calc(100vh - 66px)'
                 projectID={'ece88905-e325-4001-b6c0-84a8f1dce6a5'}
-                userName={user.email}
-                userSecret={user.uid}
+                userName='viteik@goykt.ru'
+                userSecret='WzASBoew2ufzy2hSfj7R6P2bk0Q2'
             />
         </Box>
     )
