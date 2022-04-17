@@ -1,4 +1,3 @@
-import Header from './header'
 import { Form } from './UI/form'
 import Input from './UI/input'
 import MyButton from './UI/button'
@@ -13,7 +12,6 @@ import TeamCard from './cards/team-card'
 import EmployeesCard from './cards/employees-card'
 
 export {
-    Header,
     Form,
     Input,
     MyButton,

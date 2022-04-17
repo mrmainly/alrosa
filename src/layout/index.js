@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 import { styled } from '@mui/system'
 import { Box, Grid, Container } from '@mui/material'
 
-import { LeftBar, UpBarSearch, UpBarUserName } from '../components'
+import { LeftBar, UpBarSearch, UpBarUserName, Notification } from '../components'
 
 const Main = styled(Box)(({ theme }) => ({
     height: 890,
@@ -33,7 +33,7 @@ const Layout = () => {
     return (
         <Wrapper>
             <Container maxWidth="xl" sx={{ display: 'flex' }}>
-                {/* <Notification /> */}
+                <Notification />
                 <LeftBar />
                 <Box sx={{ ml: 2.3, width: '100%' }}>
                     <UpBarContainer>

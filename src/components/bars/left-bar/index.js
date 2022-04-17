@@ -2,9 +2,11 @@ import React from 'react'
 
 import { Box, MenuItem, Switch, FormControlLabel } from '@mui/material'
 import { styled } from '@mui/system'
+import { useNavigate } from 'react-router-dom'
 
 import { MyLink } from '../..'
 import MyText from '../../text'
+import { logout } from '../../../api'
 
 const Root = styled(Box)(({ theme }) => ({
     width: 350,
@@ -37,6 +39,7 @@ const CusMenuItem = styled(MenuItem)(({ theme }) => ({
 
 
 const LeftBar = () => {
+    const navigate = useNavigate()
     const links = [
         {
             label: 'Чаты',
@@ -88,7 +91,7 @@ const LeftBar = () => {
             </CompositeBox>
             <CompositeBox>
                 <FormControlLabel control={<Switch defaultChecked />} label="Формальная тема" sx={{ ml: 1.9 }} />
-                <CusMenuItem>
+                <CusMenuItem onClick={() => logout(navigate)}>
                     <img src="/image/Logout.png" />
                     <MyText sx={{ ml: 2 }}>
                         Выйти

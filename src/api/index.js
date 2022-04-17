@@ -5,6 +5,7 @@ import { auth } from '../firebase'
 const signup = (email, password, dispatch) => {
     return (
         createUserWithEmailAndPassword(auth, email, password).then(res => {
+            console.log(res)
             dispatch({ type: 'notification', payload: { status: 'success', active: true, text: 'регистрация прошла успешно' } })
         }).catch(error => {
             dispatch({ type: 'notification', payload: { status: 'error', active: true, text: 'такой пользователь уже существует' } })
@@ -22,9 +23,11 @@ const signin = (email, password, dispatch) => {
     )
 }
 
-const logout = () => {
+const logout = (navigate) => {
     return (
-        signOut(auth)
+        signOut(auth).then(() => {
+            navigate('/sign-in')
+        })
     )
 }
 

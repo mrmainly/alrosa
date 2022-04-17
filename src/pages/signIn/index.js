@@ -15,7 +15,6 @@ import { useForm } from 'react-hook-form'
 import { Input, Form, MyButton } from '../../components'
 import { DispatchContext } from '../../store';
 import { signin } from '../../api'
-import useAuth from '../../hooks/useAuth';
 
 const theme = createTheme();
 
@@ -24,8 +23,6 @@ export default function SignUp() {
     const { register, handleSubmit } = useForm({
         mode: "onBlur"
     })
-
-    const currentUser = useAuth()
 
     const onSubmit = (data) => {
         signin(data.email, data.password, dispatch)

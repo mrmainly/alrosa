@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { styled } from '@mui/system'
 import { Box, Grid, MenuItem } from '@mui/material'
 
 import { EmployeesCard, MyText } from '../../components'
+import axios from 'axios'
 
 const Main = styled(Grid)(({ theme }) => ({
     display: 'flex',
@@ -19,12 +20,13 @@ const CreateBox = styled(Box)(({ theme }) => ({
 }))
 
 const Calendar = () => {
+    // короче мне похуй я заебался сейчас 5 утра а я не спал на протяжении 3 дней а мне еще идти и делать свои проекты так что сори за мусорный код 
     return (
         <Box>
             <CreateBox>
                 <MyText>Календарь</MyText>
             </CreateBox>
-            фыв
+            Calendar
         </Box>
     )
 }

@@ -1,10 +1,12 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
 
 import { Route, BrowserRouter, Routes } from "react-router-dom";
+
 import { DispatchContext, StateContext, defaultStore } from './store'
 import { stateReducer } from './reducer'
+import { AuthProvider } from './context/AuthContext';
 
-import { Chat, SignIn, SignUp, Calendar, Faq, Team, Employees, MyTasks, Settings } from './pages';
+import { Chat, SignIn, SignUp, Calendar, Team, Employees, MyTasks, Settings } from './pages';
 import Layout from './layout'
 
 const App = () => {
@@ -14,19 +16,20 @@ const App = () => {
     <DispatchContext.Provider value={dispatch}>
       <StateContext.Provider value={state}>
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Chat />} />
-              <Route path="/sign-in" element={<SignIn />} />
-              <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/faq" element={<Faq />} />
-              <Route path="/calendar" element={<Calendar />} />
-              <Route path="/team" element={<Team />} />
-              <Route path="/employees" element={<Employees />} />
-              <Route path="/my-tasks" element={<MyTasks />} />
-              <Route path="/settings" element={<Settings />} />
-            </Route>
-          </Routes>
+          <AuthProvider>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Chat />} />
+                <Route path="/sign-in" element={<SignIn />} />
+                <Route path="/sign-up" element={<SignUp />} />
+                <Route path="/calendar" element={<Calendar />} />
+                <Route path="/team" element={<Team />} />
+                <Route path="/employees" element={<Employees />} />
+                <Route path="/my-tasks" element={<MyTasks />} />
+                <Route path="/settings" element={<Settings />} />
+              </Route>
+            </Routes>
+          </AuthProvider>
         </BrowserRouter>
       </StateContext.Provider>
     </DispatchContext.Provider>
